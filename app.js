@@ -1,3 +1,6 @@
 const c = d => console.log(d);
 
-c(5);
+const rand = () => Math.trunc(Math.random() * 1e16);
+
+c(rand());
+
