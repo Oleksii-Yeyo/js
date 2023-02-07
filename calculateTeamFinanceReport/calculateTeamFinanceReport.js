@@ -11,18 +11,18 @@ function calculateTeamFinanceReport(salaries, team) {
     const listOfTeamsSpecialization = Object.keys(salaries);
 	
     for (const employee of team) {
-        let spec = employee.specialization;
+        const employeeSpecialization = employee.specialization;
 
-        if (!listOfTeamsSpecialization.includes(spec)) {
+        if (!listOfTeamsSpecialization.includes(employeeSpecialization)) {
             continue;
         }
 
-        if (!report[`totalBudget${spec}`]) {
-            report[`totalBudget${spec}`] = 0;
+        if (!report[`totalBudget${employeeSpecialization}`]) {
+            report[`totalBudget${employeeSpecialization}`] = 0;
         }
 
-        const salaryBeforeTaxOfEmployee = salaryBeforeTax(salaries[spec]['salary'], parseInt(salaries[spec].tax)) + 0.01;
-        report[`totalBudget${spec}`] += salaryBeforeTaxOfEmployee;
+        const salaryBeforeTaxOfEmployee = salaryBeforeTax(salaries[employeeSpecialization].salary, parseInt(salaries[employeeSpecialization].tax)) + 1e-10;
+        report[`totalBudget${employeeSpecialization}`] += salaryBeforeTaxOfEmployee;
         report.totalBudgetTeam += salaryBeforeTaxOfEmployee;
     }
 
